@@ -3,7 +3,9 @@ services:
     db:
         image: mariadb
         environment: 
-            MYSQL_ROOT_PASSWORD: epfl
+            MYSQL_ROOT_PASSWORD: kea_db_pass
     dhcpd:
         build: dhcp
+        ports:
+            - 8000:8000
         

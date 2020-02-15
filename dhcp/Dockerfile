@@ -18,7 +18,6 @@ RUN make && make install
 
 ###
 WORKDIR /app
-#RUN wget https://ftp.isc.org/isc/kea/1.5.0/kea-1.5.0.tar.gz && tar xvfz kea-1.5.0.tar.gz
 RUN wget https://ftp.isc.org/isc/kea/1.7.4/kea-1.7.4.tar.gz
 RUN tar xvfz kea-1.7.4.tar.gz
 WORKDIR /app/kea-1.7.4
@@ -32,5 +31,6 @@ RUN  ./configure  && \
             make -j4 && \
             make install
 RUN echo "/usr/local/lib/hooks" > /etc/ld.so.conf.d/kea.conf && ldconfig
-RUN apt-get install -y mariadb-client curl
+RUN apt-get install -y mariadb-client curl vim net-tools
+EXPOSE 8000
 CMD ["/bin/bash", "-c", "sleep 99999"]
