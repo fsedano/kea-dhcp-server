@@ -11,4 +11,4 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag kea-dhcp-server:$(date +%s)
+      run: docker build dhcp/. --file Dockerfile --tag kea-dhcp-server:$(date +%s)
