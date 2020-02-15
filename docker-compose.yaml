@@ -1,0 +1,9 @@
+version: '3'
+services:
+    db:
+        image: mariadb
+        environment: 
+            MYSQL_ROOT_PASSWORD: epfl
+    dhcpd:
+        build: dhcp
+        
