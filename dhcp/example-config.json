@@ -5,8 +5,19 @@
         
         "Dhcp4": {
                 "authoritative": true,
+                "hooks-libraries": [
+                    {"library": "/usr/local/lib/kea/hooks/libdhcp_lease_cmds.so"}
+                ],
+                "hosts-database": {
+                    "type": "mysql",
+                    "name": "kea",
+                    "user": "root",
+                    "password": "kea_db_pass",
+                    "host": "127.0.0.1",
+                    "port": 3306
+              },         
                 "interfaces-config": {
-                    "interfaces": [ "eth0" ]
+                    "interfaces": [  ]
                 },
                 "control-socket": {
                     "socket-name": "/tmp/kea4-ctrl-socket",
@@ -14,7 +25,7 @@
                 },
                 "loggers": [
                     {"name": "kea-dhcp4","severity": "DEBUG","output_options": [{"output": "/usr/local/var/log/kea-dhcp4.log"}]}
-                    ],
+                ],
                 "subnet4": [
                 {
                     "subnet": "172.18.0.0/16",
@@ -25,9 +36,6 @@
                     ],
                     "option-data": [
                         {"name": "routers","data":"172.18.255.254"}
-                    ],
-                    "reservations": [
-                        {"hw-address": "1a:1b:1c:1d:1e:1f","ip-address":"172.18.40.1","hostname": "special-snowflake"}
                     ]
                 }
             ]

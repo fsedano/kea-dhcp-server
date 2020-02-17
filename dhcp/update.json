@@ -1,0 +1,11 @@
+{
+    "command": "lease4-update",
+    "service": ["dhcp4"],
+    "arguments": {
+      "ip-address": "172.18.88.27",
+      "hostname": "newhostname.example.org",
+      "hw-address": "00:50:56:8b:d8:88",
+      "subnet-id": 1,
+      "force-create": true
+    }
+  }

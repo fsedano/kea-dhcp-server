@@ -9,7 +9,7 @@ This is a work in progress, specially need to do multistage
 
 ### Instructions
 
-kea-admin db-init mysql -u root -p kea_db_pass  -h db
+kea-admin db-init mysql -u root -p kea_db_pass  -h db -n kea
 
 /usr/local/etc/kea
 

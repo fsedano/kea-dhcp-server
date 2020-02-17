@@ -1,0 +1,7 @@
+{
+    "command": "lease4-add",
+    "service": ["dhcp4"],
+    "arguments":  {
+         "ip-address": "172.18.88.22", "hw-address": "1a:1b:1c:1d:1e:1f"
+    }
+}

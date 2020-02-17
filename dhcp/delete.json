@@ -1,0 +1,9 @@
+{
+  "command": "lease4-del",
+  "service": ["dhcp4"],
+  "arguments": {
+    "identifier": "00:50:56:8b:d8:88",
+    "identifier-type":"hw-address",
+    "subnet-id":1
+  }
+}
