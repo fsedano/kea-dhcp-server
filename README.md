@@ -12,3 +12,6 @@ This is a work in progress, specially need to do multistage
 kea-admin db-init mysql -u root -p kea_db_pass  -h db
 
 /usr/local/etc/kea
+
+### REST
+curl -X POST -H "Content-Type: application/json" -d '{ "command": "config-get", "service": ["dhcp4"] }' http://localhost:8000/ | json_pp

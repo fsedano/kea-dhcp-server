@@ -5,7 +5,9 @@ services:
         environment: 
             MYSQL_ROOT_PASSWORD: kea_db_pass
     dhcpd:
-        build: dhcp
+        image: fsedano/kea_dhcp_server_docker_dhcpd:0.1
+        network_mode: host
+        #build: dhcp
         ports:
             - 8000:8000
         

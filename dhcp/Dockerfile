@@ -27,10 +27,13 @@ RUN PKG_CONFIG_PATH=/usr/local/lib64/pkgconfig && \
 #RUN  ./configure --with-sysrepo && \
 #            make -j4 && \
 #            make install
-RUN  ./configure  && \
+RUN apt-get install -y libmariadbclient-dev
+RUN  ./configure --with-mysql && \
             make -j4 && \
             make install
 RUN echo "/usr/local/lib/hooks" > /etc/ld.so.conf.d/kea.conf && ldconfig
 RUN apt-get install -y mariadb-client curl vim net-tools
+COPY bootstrap.sh /app
+COPY config_data/ /usr/local/etc/kea
 EXPOSE 8000
 CMD ["/bin/bash", "-c", "sleep 99999"]
