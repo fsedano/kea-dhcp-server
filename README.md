@@ -1,3 +1,5 @@
+![Docker Image CI](https://github.com/fsedano/kea-dhcp-server/workflows/Docker%20Image%20CI/badge.svg)
+
 Image for KEA DHCP server + Mysql + REST interface
 
 Does the world need another KEA Dhcpd server image? I could not find a suitable one
