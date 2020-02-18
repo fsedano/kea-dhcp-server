@@ -36,5 +36,11 @@ RUN apt-get install -y mariadb-client curl vim net-tools
 COPY bootstrap.sh /app
 COPY config_data/ /usr/local/etc/kea
 COPY *.json /data/
+
+## Hooks
+
+COPY hook/ /app/custom_hook/
+WORKDIR /app/custom_hook
+RUN ./build.sh
 EXPOSE 8000
 CMD ["/bin/bash", "-c", "sleep 99999"]

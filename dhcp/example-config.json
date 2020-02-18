@@ -6,7 +6,8 @@
         "Dhcp4": {
                 "authoritative": true,
                 "hooks-libraries": [
-                    {"library": "/usr/local/lib/kea/hooks/libdhcp_lease_cmds.so"}
+                    {"library": "/usr/local/lib/kea/hooks/libdhcp_lease_cmds.so"},
+                    {"library": "/app/custom_hook/example.so"}
                 ],
                 "hosts-database": {
                     "type": "mysql",
