@@ -13,9 +13,9 @@ jobs:
       run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
     - name: Get the version
       id: vars
-      run: echo ::set-output name=tag::$(echo ${GITHUB_REF:10})
+      run: echo ::set-output name=tag::$(echo ${GITHUB_REF:11})
     - name: Build the tagged Docker image
-      run: docker build . --file Dockerfile --tag fsedano/kea_dhcp_server_docker_dhcpd:${{steps.vars.outputs.tag}}
+      run: docker build dhcp  --tag fsedano/kea_dhcp_server_docker_dhcpd:${{steps.vars.outputs.tag}}
     - name: Push the tagged Docker image
       run: docker push fsedano/kea_dhcp_server_docker_dhcpd:${{steps.vars.outputs.tag}}
     - name: Build the latest Docker image
