@@ -7,7 +7,7 @@ services:
         volumes:
             - dhcp_mysql:/var/lib/mysql
     dhcpd:
-        image: fsedano/kea_dhcp_server_docker_dhcpd:0.1
+        image: fsedano/kea_dhcp_server_docker_dhcpd:latest
         network_mode: host
         build: dhcp
         ports:

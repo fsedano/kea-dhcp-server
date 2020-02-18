@@ -35,6 +35,6 @@ RUN echo "/usr/local/lib/hooks" > /etc/ld.so.conf.d/kea.conf && ldconfig
 RUN apt-get install -y mariadb-client curl vim net-tools
 COPY bootstrap.sh /app
 COPY config_data/ /usr/local/etc/kea
-COPY example-config.json /data/
+COPY *.json /data/
 EXPOSE 8000
 CMD ["/bin/bash", "-c", "sleep 99999"]

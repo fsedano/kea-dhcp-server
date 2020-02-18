@@ -18,7 +18,7 @@ jobs:
       run: docker build dhcp  --tag fsedano/kea_dhcp_server_docker_dhcpd:${{steps.vars.outputs.tag}}
     - name: Push the tagged Docker image
       run: docker push fsedano/kea_dhcp_server_docker_dhcpd:${{steps.vars.outputs.tag}}
-    - name: Build the latest Docker image
-      run: docker build . --file Dockerfile --tag fsedano/kea_dhcp_server_docker_dhcpd:latest
+    - name: Set latest
+      run: docker tag fsedano/kea_dhcp_server_docker_dhcpd:${{steps.vars.outputs.tag}} fsedano/kea_dhcp_server_docker_dhcpd:latest
     - name: Push the latest Docker image
       run: docker push fsedano/kea_dhcp_server_docker_dhcpd:latest

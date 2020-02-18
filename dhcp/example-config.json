@@ -15,7 +15,15 @@
                     "password": "kea_db_pass",
                     "host": "127.0.0.1",
                     "port": 3306
-              },         
+              },
+              "lease-database": {
+                "type": "mysql",
+                "name": "kea",
+                "user": "root",
+                "password": "kea_db_pass",
+                "host": "127.0.0.1",
+                "port": 3306
+              },
                 "interfaces-config": {
                     "interfaces": [  ]
                 },
@@ -34,6 +42,12 @@
                             "pool": "172.18.20.0 - 172.18.30.0"
                         }
                     ],
+                    "reservations": [
+                        {
+                            "hw-address": "1a:1b:1c:1d:1e:1f",
+                            "ip-address": "172.18.200.100"
+                        }
+                      ],
                     "option-data": [
                         {"name": "routers","data":"172.18.255.254"}
                     ]
