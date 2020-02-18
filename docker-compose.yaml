@@ -6,12 +6,23 @@ services:
             MYSQL_ROOT_PASSWORD: kea_db_pass
         volumes:
             - dhcp_mysql:/var/lib/mysql
+        ports:
+            - 3306:3306
     dhcpd:
         image: fsedano/kea_dhcp_server_docker_dhcpd:latest
         network_mode: host
         build: dhcp
         ports:
             - 8000:8000
-        
+    websvc:
+        build: websvc
+        volumes:
+            - ./websvc/src:/app:delegated
+        ports:
+            - 8001:8001
+        environment: 
+            - LC_ALL=C.UTF-8
+            - LANG=C.UTF-8
+            - PORT=8001
 volumes:
     dhcp_mysql:
