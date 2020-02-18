@@ -1,6 +1,6 @@
 FROM ubuntu:18.04
 RUN apt-get update && apt-get install -y python3
-RUN apt-get -y install mariadb-client python3-pip
+RUN apt-get -y install mariadb-client python3-pip libmariadbclient-dev
 EXPOSE 8001
 WORKDIR /app
 COPY src/* /app/

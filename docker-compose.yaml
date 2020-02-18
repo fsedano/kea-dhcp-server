@@ -15,6 +15,7 @@ services:
         ports:
             - 8000:8000
     websvc:
+        network_mode: host
         build: websvc
         volumes:
             - ./websvc/src:/app:delegated
