@@ -4,6 +4,8 @@ services:
         image: mariadb
         environment: 
             MYSQL_ROOT_PASSWORD: kea_db_pass
+        volumes:
+            - dhcp_mysql:/var/lib/mysql
     dhcpd:
         image: fsedano/kea_dhcp_server_docker_dhcpd:0.1
         network_mode: host
@@ -11,3 +13,5 @@ services:
         ports:
             - 8000:8000
         
+volumes:
+    dhcp_mysql:

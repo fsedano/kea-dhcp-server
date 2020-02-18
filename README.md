@@ -1,4 +1,4 @@
-![Docker Image CI](https://github.com/fsedano/kea-dhcp-server/workflows/Docker%20Image%20CI/badge.svg)
+![CI](https://github.com/fsedano/kea-dhcp-server/workflows/CI/badge.svg?event=push)
 
 Image for KEA DHCP server + Mysql + REST interface
 
