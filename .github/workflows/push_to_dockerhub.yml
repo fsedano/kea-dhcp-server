@@ -14,11 +14,20 @@ jobs:
     - name: Get the version
       id: vars
       run: echo ::set-output name=tag::$(echo ${GITHUB_REF:11})
-    - name: Build the tagged Docker image
+    - name: Build DHCPD container
       run: docker build dhcp  --tag fsedano/kea_dhcp_server_docker_dhcpd:${{steps.vars.outputs.tag}}
-    - name: Push the tagged Docker image
+    - name: Push the tagged dhcpd Docker image
       run: docker push fsedano/kea_dhcp_server_docker_dhcpd:${{steps.vars.outputs.tag}}
     - name: Set latest
       run: docker tag fsedano/kea_dhcp_server_docker_dhcpd:${{steps.vars.outputs.tag}} fsedano/kea_dhcp_server_docker_dhcpd:latest
     - name: Push the latest Docker image
       run: docker push fsedano/kea_dhcp_server_docker_dhcpd:latest
+      
+    - name: Build web service container
+      run: docker build websvc  --tag fsedano/kea_dhcp_server_docker_websvc:${{steps.vars.outputs.tag}}
+    - name: Push the tagged websvc Docker image
+      run: docker push fsedano/kea_dhcp_server_docker_websvc:${{steps.vars.outputs.tag}}
+    - name: Set latest
+      run: docker tag fsedano/kea_dhcp_server_docker_websvc:${{steps.vars.outputs.tag}} fsedano/kea_dhcp_server_docker_websvc:latest
+    - name: Push the latest Docker image
+      run: docker push fsedano/kea_dhcp_server_docker_websvc:latest
