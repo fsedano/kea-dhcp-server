@@ -10,12 +10,12 @@ services:
             - 3306:3306
     dhcpd:
         image: fsedano/kea_dhcp_server_docker_dhcpd:latest
-        network_mode: host
+        #network_mode: host
         build: dhcp
         ports:
             - 8000:8000
     websvc:
-        network_mode: host
+        #network_mode: host
         build: websvc
         volumes:
             - ./websvc/src:/app:delegated

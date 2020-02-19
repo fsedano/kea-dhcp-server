@@ -2,3 +2,5 @@ fastapi
 uvicorn
 sqlalchemy
 mysqlclient
+async-exit-stack
+async-generator
