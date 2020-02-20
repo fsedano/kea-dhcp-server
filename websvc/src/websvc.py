@@ -29,28 +29,31 @@ def get_db():
 
 
 @app.get("/hosts/", response_model=List[schemas.Host])
-def read_hosts(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+def read_hosts(skip: int = 0, rnd: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     users = crud.get_hosts(db, skip=skip, limit=limit)
+    print(f"Users is {users[0].dhcp_identifier}")
     return users
 
 @app.post("/hosts/", response_model=schemas.Host)
 def create_host(host: schemas.HostCreate, db: Session = Depends(get_db)):
-    return crud.create_host(db=db, host=host)
+    host = crud.create_host(db=db, host=host)
+    if not host:
+        raise HTTPException(status_code=409, detail="Duplicate host")
+    return host
 
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
+@app.delete("/hosts/", response_model=schemas.Host)
+def delete_host(host: schemas.HostDelete, db: Session = Depends(get_db)):
+    host = crud.delete_host(db=db, host=host)
+    if not host:
+        raise HTTPException(status_code=404, detail="Host not found")
+    return host
 
-@app.get("/host-reservation")
-def get_reservations():
-    #return session.query(HostIdentifierType)
-    return {'a':'b'}
 
-@app.get("/host-reservation/{reservation_mac}")
-def get_reservation(reservation_mac):
-    #return session.query(HostIdentifierType)
-    return {'a':reservation_mac}
+@app.get("/host/", response_model=schemas.Host)
+def get_host( dhcp_identifier_type: int, dhcp_identifier: str,  db: Session = Depends(get_db)):
+    host = crud.search_host(db=db, dhcp_identifier=dhcp_identifier, dhcp_identifier_type=dhcp_identifier_type)
+    if not host:
+        raise HTTPException(status_code=404, detail="Host not found")
+    return host
 
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: str = None):
-    return {"item_id": item_id, "q": q}
+

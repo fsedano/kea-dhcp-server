@@ -4,7 +4,7 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy import Column, Integer, String, VARBINARY
 from sqlalchemy.dialects.mysql import TINYINT, BOOLEAN
 
-from .database import Base
+from .database import Base, MAC
 
 #session = Session()
 
@@ -17,11 +17,6 @@ class HostType(Base):
     __tablename__ = "hosts"
     host_id = Column(Integer, primary_key=True)
     hostname = Column(String)
-    dhcp_identifier = Column(VARBINARY(length=128))
+    dhcp_identifier = Column(MAC())
     dhcp_identifier_type = Column(TINYINT(4))
-
-
-#for instance in session.query(HostIdentifierType):
-#    print(instance.type)
-#    print(instance.name)
 
